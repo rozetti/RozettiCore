@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{AF55D81B-1D8B-4459-B4C9-CC38F8544210}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>rz_core</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\Impl\rz_core_dom_document_impl.cpp" />
+    <ClCompile Include="..\..\..\src\Impl\rz_core_dom_node_impl.cpp" />
+    <ClCompile Include="..\..\..\src\rz_core_angles.cpp" />
+    <ClCompile Include="..\..\..\src\rz_core_bounding_box.cpp" />
+    <ClCompile Include="..\..\..\src\rz_core_bounding_sphere.cpp" />
+    <ClCompile Include="..\..\..\src\rz_core_clock.cpp" />
+    <ClCompile Include="..\..\..\src\rz_core_conversion.cpp" />
+    <ClCompile Include="..\..\..\src\rz_core_dom_document.cpp" />
+    <ClCompile Include="..\..\..\src\rz_core_dom_node.cpp" />
+    <ClCompile Include="..\..\..\src\rz_core_game.cpp" />
+    <ClCompile Include="..\..\..\src\rz_core_indent.cpp" />
+    <ClCompile Include="..\..\..\src\rz_core_lap_timer.cpp" />
+    <ClCompile Include="..\..\..\src\rz_core_lua.cpp" />
+    <ClCompile Include="..\..\..\src\rz_core_matrix.cpp" />
+    <ClCompile Include="..\..\..\src\rz_core_matrix_factory.cpp" />
+    <ClCompile Include="..\..\..\src\rz_core_plane.cpp" />
+    <ClCompile Include="..\..\..\src\rz_core_quaternion.cpp" />
+    <ClCompile Include="..\..\..\src\rz_core_random.cpp" />
+    <ClCompile Include="..\..\..\src\rz_core_ray.cpp" />
+    <ClCompile Include="..\..\..\src\rz_core_rectangle.cpp" />
+    <ClCompile Include="..\..\..\src\rz_core_vector2_factory.cpp" />
+    <ClCompile Include="..\..\..\src\rz_core_vector3.cpp" />
+    <ClCompile Include="..\..\..\src\rz_core_vector3_factory.cpp" />
+    <ClCompile Include="..\..\..\third_party\lua\lapi.c" />
+    <ClCompile Include="..\..\..\third_party\lua\lauxlib.c" />
+    <ClCompile Include="..\..\..\third_party\lua\lbaselib.c" />
+    <ClCompile Include="..\..\..\third_party\lua\lbitlib.c" />
+    <ClCompile Include="..\..\..\third_party\lua\lcode.c" />
+    <ClCompile Include="..\..\..\third_party\lua\lcorolib.c" />
+    <ClCompile Include="..\..\..\third_party\lua\lctype.c" />
+    <ClCompile Include="..\..\..\third_party\lua\ldblib.c" />
+    <ClCompile Include="..\..\..\third_party\lua\ldebug.c" />
+    <ClCompile Include="..\..\..\third_party\lua\ldo.c" />
+    <ClCompile Include="..\..\..\third_party\lua\ldump.c" />
+    <ClCompile Include="..\..\..\third_party\lua\lfunc.c" />
+    <ClCompile Include="..\..\..\third_party\lua\lgc.c" />
+    <ClCompile Include="..\..\..\third_party\lua\linit.c" />
+    <ClCompile Include="..\..\..\third_party\lua\liolib.c" />
+    <ClCompile Include="..\..\..\third_party\lua\llex.c" />
+    <ClCompile Include="..\..\..\third_party\lua\lmathlib.c" />
+    <ClCompile Include="..\..\..\third_party\lua\lmem.c" />
+    <ClCompile Include="..\..\..\third_party\lua\loadlib.c" />
+    <ClCompile Include="..\..\..\third_party\lua\lobject.c" />
+    <ClCompile Include="..\..\..\third_party\lua\lopcodes.c" />
+    <ClCompile Include="..\..\..\third_party\lua\loslib.c" />
+    <ClCompile Include="..\..\..\third_party\lua\lparser.c" />
+    <ClCompile Include="..\..\..\third_party\lua\lstate.c" />
+    <ClCompile Include="..\..\..\third_party\lua\lstring.c" />
+    <ClCompile Include="..\..\..\third_party\lua\lstrlib.c" />
+    <ClCompile Include="..\..\..\third_party\lua\ltable.c" />
+    <ClCompile Include="..\..\..\third_party\lua\ltablib.c" />
+    <ClCompile Include="..\..\..\third_party\lua\ltm.c" />
+    <ClCompile Include="..\..\..\third_party\lua\lundump.c" />
+    <ClCompile Include="..\..\..\third_party\lua\lvm.c" />
+    <ClCompile Include="..\..\..\third_party\lua\lzio.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\src\Impl\rz_core_dom_document_impl.h" />
+    <ClInclude Include="..\..\..\src\Impl\rz_core_dom_node_impl.h" />
+    <ClInclude Include="..\..\..\src\rz_core.h" />
+    <ClInclude Include="..\..\..\src\rz_core_angles.h" />
+    <ClInclude Include="..\..\..\src\rz_core_bounding_box.h" />
+    <ClInclude Include="..\..\..\src\rz_core_bounding_sphere.h" />
+    <ClInclude Include="..\..\..\src\rz_core_clock.h" />
+    <ClInclude Include="..\..\..\src\rz_core_conversion.h" />
+    <ClInclude Include="..\..\..\src\rz_core_dom_document.h" />
+    <ClInclude Include="..\..\..\src\rz_core_dom_node.h" />
+    <ClInclude Include="..\..\..\src\rz_core_finally_pattern.h" />
+    <ClInclude Include="..\..\..\src\rz_core_math_templates.h" />
+    <ClInclude Include="..\..\..\src\rz_core_game.h" />
+    <ClInclude Include="..\..\..\src\rz_core_indent.h" />
+    <ClInclude Include="..\..\..\src\rz_core_interpolation.h" />
+    <ClInclude Include="..\..\..\src\rz_core_lap_timer.h" />
+    <ClInclude Include="..\..\..\src\rz_core_lua.h" />
+    <ClInclude Include="..\..\..\src\rz_core_lua_scriptable_object_operation.h" />
+    <ClInclude Include="..\..\..\src\rz_core_macros.h" />
+    <ClInclude Include="..\..\..\src\rz_core_matrix.h" />
+    <ClInclude Include="..\..\..\src\rz_core_matrix_factory.h" />
+    <ClInclude Include="..\..\..\src\rz_core_object_interfaces.h" />
+    <ClInclude Include="..\..\..\src\rz_core_plane.h" />
+    <ClInclude Include="..\..\..\src\rz_core_printf.h" />
+    <ClInclude Include="..\..\..\src\rz_core_quaternion.h" />
+    <ClInclude Include="..\..\..\src\rz_core_random.h" />
+    <ClInclude Include="..\..\..\src\rz_core_range.h" />
+    <ClInclude Include="..\..\..\src\rz_core_ray.h" />
+    <ClInclude Include="..\..\..\src\rz_core_rectangle.h" />
+    <ClInclude Include="..\..\..\src\rz_core_script_operations.h" />
+    <ClInclude Include="..\..\..\src\rz_core_serialisable.h" />
+    <ClInclude Include="..\..\..\src\rz_core_substr.h" />
+    <ClInclude Include="..\..\..\src\rz_core_type_list.h" />
+    <ClInclude Include="..\..\..\src\rz_core_vector2.h" />
+    <ClInclude Include="..\..\..\src\rz_core_vector2_factory.h" />
+    <ClInclude Include="..\..\..\src\rz_core_vector3.h" />
+    <ClInclude Include="..\..\..\src\rz_core_vector3_factory.h" />
+    <ClInclude Include="..\..\..\src\rz_core_visitor_pattern.h" />
+    <ClInclude Include="..\..\..\third_party\lua\lapi.h" />
+    <ClInclude Include="..\..\..\third_party\lua\lauxlib.h" />
+    <ClInclude Include="..\..\..\third_party\lua\lcode.h" />
+    <ClInclude Include="..\..\..\third_party\lua\lctype.h" />
+    <ClInclude Include="..\..\..\third_party\lua\ldebug.h" />
+    <ClInclude Include="..\..\..\third_party\lua\ldo.h" />
+    <ClInclude Include="..\..\..\third_party\lua\lfunc.h" />
+    <ClInclude Include="..\..\..\third_party\lua\lgc.h" />
+    <ClInclude Include="..\..\..\third_party\lua\llex.h" />
+    <ClInclude Include="..\..\..\third_party\lua\llimits.h" />
+    <ClInclude Include="..\..\..\third_party\lua\lmem.h" />
+    <ClInclude Include="..\..\..\third_party\lua\lobject.h" />
+    <ClInclude Include="..\..\..\third_party\lua\lopcodes.h" />
+    <ClInclude Include="..\..\..\third_party\lua\lparser.h" />
+    <ClInclude Include="..\..\..\third_party\lua\lstate.h" />
+    <ClInclude Include="..\..\..\third_party\lua\lstring.h" />
+    <ClInclude Include="..\..\..\third_party\lua\ltable.h" />
+    <ClInclude Include="..\..\..\third_party\lua\ltm.h" />
+    <ClInclude Include="..\..\..\third_party\lua\lua.h" />
+    <ClInclude Include="..\..\..\third_party\lua\lua.hpp" />
+    <ClInclude Include="..\..\..\third_party\lua\luaconf.h" />
+    <ClInclude Include="..\..\..\third_party\lua\lualib.h" />
+    <ClInclude Include="..\..\..\third_party\lua\lundump.h" />
+    <ClInclude Include="..\..\..\third_party\lua\lvm.h" />
+    <ClInclude Include="..\..\..\third_party\lua\lzio.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
