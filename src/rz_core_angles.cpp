@@ -9,7 +9,7 @@ namespace rz
 {
 	float angle_between_points(rz::vector2 const &origin, rz::vector2 const &target)
 	{
-		return angle_between_points(origin.x, origin.y, target.x, target.y);
+		return angle_between_points(origin.x(), origin.y(), target.x(), target.y());
 	}
 
 	double angle_between_angles(double angle0, double angle1)

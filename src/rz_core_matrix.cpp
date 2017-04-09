@@ -141,9 +141,9 @@ rz::matrix &rz::matrix::multiply(rz::matrix const &other)
 rz::vector3 rz::matrix::multiply(rz::vector3 const &v) const
 {
 	// todo crz: rz_platform optimisation
-	float x = M11() * v.x + M12() * v.y + M13() * v.z + M41();
-	float y = M21() * v.x + M22() * v.y + M23() * v.z + M42();
-	float z = M31() * v.x + M32() * v.y + M33() * v.z + M43();
+	float x = M11() * v.x() + M12() * v.y() + M13() * v.z() + M41();
+	float y = M21() * v.x() + M22() * v.y() + M23() * v.z() + M42();
+	float z = M31() * v.x() + M32() * v.y() + M33() * v.z() + M43();
 
 	return rz::vector3(x, y, z);
 }

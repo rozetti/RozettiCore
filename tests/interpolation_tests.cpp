@@ -7,9 +7,9 @@ TEST(InterpolationTests, Lerp_FromOrigin)
 
 	auto v = rz::lerp(v0, v1, 0.5f);
 
-	EXPECT_EQ(0.5f, v.x);
-	EXPECT_EQ(1.0f, v.y);
-	EXPECT_EQ(1.5f, v.z);
+	EXPECT_EQ(0.5f, v.x());
+	EXPECT_EQ(1.0f, v.y());
+	EXPECT_EQ(1.5f, v.z());
 }
 
 TEST(InterpolationTests, Lerp_NotFromOrigin)
@@ -19,7 +19,7 @@ TEST(InterpolationTests, Lerp_NotFromOrigin)
 
 	auto v = rz::lerp(v0, v1, 0.5f);
 
-	EXPECT_EQ(1.5f, v.x);
-	EXPECT_EQ(2.5f, v.y);
-	EXPECT_EQ(3.5f, v.z);
+	EXPECT_EQ(1.5f, v.x());
+	EXPECT_EQ(2.5f, v.y());
+	EXPECT_EQ(3.5f, v.z());
 }

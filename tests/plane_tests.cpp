@@ -12,9 +12,9 @@ TEST(PlaneTest, Ctor2)
 {
 	rz::plane p(1.0f, 2.0f, 3.0f, 4.0f);
 
-	EXPECT_EQ(1.0f, p.normal.x);
-	EXPECT_EQ(2.0f, p.normal.y);
-	EXPECT_EQ(3.0f, p.normal.z);
+	EXPECT_EQ(1.0f, p.normal.x());
+	EXPECT_EQ(2.0f, p.normal.y());
+	EXPECT_EQ(3.0f, p.normal.z());
 	EXPECT_EQ(4.0f, p.distance_from_origin);
 }
 
@@ -24,9 +24,9 @@ TEST(PlaneTest, Normalise)
 
 	p.normalise();
 
-	EXPECT_NEAR(0.2673f, p.normal.x, 0.01);
-	EXPECT_NEAR(0.5345f, p.normal.y, 0.01);
-	EXPECT_NEAR(0.8017f, p.normal.z, 0.01);
+	EXPECT_NEAR(0.2673f, p.normal.x(), 0.01);
+	EXPECT_NEAR(0.5345f, p.normal.y(), 0.01);
+	EXPECT_NEAR(0.8017f, p.normal.z(), 0.01);
 	EXPECT_NEAR(1.0690f, p.distance_from_origin, 0.001);
 }
 

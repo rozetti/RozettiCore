@@ -14,24 +14,32 @@ void rz::lua_scriptable_object_operations<rz::bounding_box>
 	lua_getfield(state, -1, "min");
 	
 	lua_getfield(state, -1, "x");
-	object.min.x = static_cast<float>(lua_tonumber(state, -1));
+	auto min_x = static_cast<float>(lua_tonumber(state, -1));
 	lua_pop(state, 1);
 	
 	lua_getfield(state, -1, "y");
-	object.min.y = static_cast<float>(lua_tonumber(state, -1));
+	auto min_y = static_cast<float>(lua_tonumber(state, -1));
 	lua_pop(state, 1);
 	
+	lua_getfield(state, -1, "z");
+	auto min_z = static_cast<float>(lua_tonumber(state, -1));
+	lua_pop(state, 1);
+
 	lua_pop(state, 1);
 	lua_getfield(state, -1, "max");
 	
 	lua_getfield(state, -1, "x");
-	object.max.x = static_cast<float>(lua_tonumber(state, -1));
+	auto max_x = static_cast<float>(lua_tonumber(state, -1));
 	lua_pop(state, 1);
 	
 	lua_getfield(state, -1, "y");
-	object.max.y = static_cast<float>(lua_tonumber(state, -1));
+	auto max_y = static_cast<float>(lua_tonumber(state, -1));
 	lua_pop(state, 1);
 	
+	lua_getfield(state, -1, "z");
+	auto max_z = static_cast<float>(lua_tonumber(state, -1));
+	lua_pop(state, 1);
+
 	lua_pop(state, 1);
 }
 
@@ -43,16 +51,21 @@ void rz::lua_scriptable_object_operations<rz::bounding_box>::upload(lua_State *s
 	lua_getfield(state, -1, "min");
 	assert(lua_istable(state, -1));
 	
-	lua_pushnumber(state, object.min.x);
+	lua_pushnumber(state, object.min().x());
 	lua_setfield(state, -2, "x");
-	lua_pushnumber(state, object.min.y);
+	lua_pushnumber(state, object.min().y());
 	lua_setfield(state, -2, "y");
+	lua_pushnumber(state, object.min().z());
+	lua_setfield(state, -2, "z");
 	lua_pop(state, 1);
+
 	lua_getfield(state, -1, "max");
-	lua_pushnumber(state, object.max.x);
+	lua_pushnumber(state, object.max().x());
 	lua_setfield(state, -2, "x");
-	lua_pushnumber(state, object.max.y);
+	lua_pushnumber(state, object.max().y());
 	lua_setfield(state, -2, "y");
+	lua_pushnumber(state, object.max().z());
+	lua_setfield(state, -2, "z");
 	lua_pop(state, 1);
 }
 

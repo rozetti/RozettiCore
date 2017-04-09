@@ -7,7 +7,7 @@ TEST(Vector3FactoryTest, CreateUp)
 
 	auto v = rz::vector3_factory::create_up(eye, target);
 
-	EXPECT_EQ(0, v.x);
-	EXPECT_EQ(1, v.y);
-	EXPECT_EQ(0, v.z);
+	EXPECT_EQ(0, v.x());
+	EXPECT_EQ(1, v.y());
+	EXPECT_EQ(0, v.z());
 }

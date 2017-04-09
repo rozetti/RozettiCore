@@ -6,7 +6,7 @@
 class class1
 {
 public:
-	class1() : m_i(0), m_v{1,2,3,4}
+	class1() : m_i(0), m_v({1,2,3,4})
 	{
 		std::cout << "class1 default ctor" << std::endl;
 		}
@@ -187,7 +187,7 @@ public:
 		class class2
 		{
 		public:
-			class2() : m_i(0), m_v{1,2,3,4}
+			class2() : m_i(0), m_v({1,2,3,4})
 			{
 				std::cout << "class2 default ctor" << std::endl;
 			}

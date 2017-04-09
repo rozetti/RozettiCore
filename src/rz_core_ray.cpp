@@ -18,17 +18,17 @@ float rz::ray::intersection_with(bounding_box const &box) const
 	auto lower = 0.0f;
 	auto upper = FLT_MAX;
 	
-	if (std::abs(direction.x) <= ONE_FLT_EPSILON)
+	if (std::abs(direction.x()) <= ONE_FLT_EPSILON)
 	{
-		if (position.x < box.min.x || position.x > box.max.x)
+		if (position.x() < box.min().x() || position.x() > box.max().x())
 		{
 			return -1.0f;
 		}
 	}
 	else
 	{
-		auto a = (box.min.x - position.x) / direction.x;
-		auto b = (box.max.x - position.x) / direction.x;
+		auto a = (box.min().x() - position.x()) / direction.x();
+		auto b = (box.max().x() - position.x()) / direction.x();
 		if (a > b) std::swap(a, b);
 
 		lower = rz::max(a, lower);
@@ -39,17 +39,17 @@ float rz::ray::intersection_with(bounding_box const &box) const
 		}
 	}
 
-	if (std::abs(direction.y) <= ONE_FLT_EPSILON)
+	if (std::abs(direction.y()) <= ONE_FLT_EPSILON)
 	{
-		if (position.y < box.min.y || position.y > box.max.y)
+		if (position.y() < box.min().y() || position.y() > box.max().y())
 		{
 			return -1.0f;
 		}
 	}
 	else
 	{
-		auto a = (box.min.y - position.y) / direction.y;
-		auto b = (box.max.y - position.y) / direction.y;
+		auto a = (box.min().y() - position.y()) / direction.y();
+		auto b = (box.max().y() - position.y()) / direction.y();
 		if (a > b) std::swap(a, b);
 
 		lower = rz::max(a, lower);
@@ -60,17 +60,17 @@ float rz::ray::intersection_with(bounding_box const &box) const
 		}
 	}
 
-	if (std::abs(direction.z) <= ONE_FLT_EPSILON)
+	if (std::abs(direction.z()) <= ONE_FLT_EPSILON)
 	{
-		if (position.z < box.min.z || position.z > box.max.z)
+		if (position.z() < box.min().z() || position.z() > box.max().z())
 		{
 			return -1.0f;
 		}
 	}
 	else
 	{
-		auto a = (box.min.z - position.z) / direction.z;
-		auto b = (box.max.z - position.z) / direction.z;
+		auto a = (box.min().z() - position.z()) / direction.z();
+		auto b = (box.max().z() - position.z()) / direction.z();
 		if (a > b) std::swap(a, b);
 
 		lower = rz::max(a, lower);
@@ -86,11 +86,8 @@ float rz::ray::intersection_with(bounding_box const &box) const
 
 float rz::ray::intersection_with(rz::bounding_sphere const &sphere) const
 {
-	auto dx = sphere.centre.x - position.x;
-	auto dy = sphere.centre.y - position.y;
-	auto dz = sphere.centre.z - position.z;
-
-	auto distance_squared = dx * dx + dy * dy + dz * dz;
+	auto displacement = sphere.centre - position;
+	auto distance_squared = displacement.squared().sum();
 	auto radius_squared = sphere.radius * sphere.radius;
 
 	if (distance_squared <= radius_squared) // crz: inside sphere
@@ -98,7 +95,7 @@ float rz::ray::intersection_with(rz::bounding_sphere const &sphere) const
 		return 0.0f;
 	}
 
-	auto d_dot_direction = dx * direction.x + dy * direction.y + dz * direction.z;
+	auto d_dot_direction = displacement.dot(direction);
 	if (d_dot_direction < 0.0f) // crz: pointing away from sphere
 	{
 		return -1.0f;
@@ -125,21 +122,16 @@ float rz::ray::intersection_with(rz::plane const &plane) const
 	auto p2(p0 + rz::matrix_factory::create_rotation_around_y(rz::PI_OVER_TWO_f) * p0);
 
 	rz::matrix m;
+	m.M1(la - lb);
+	m.M2(p1 - p0);
+	m.M3(p2 - p0);
 
-	m.M11(la.x - lb.x);
-	m.M21(p1.x - p0.x);
-	m.M31(p2.x - p0.x);
-	m.M12(la.y - lb.y);
-	m.M22(p1.y - p0.y);
-	m.M32(p2.y - p0.y);
-	m.M13(la.z - lb.z);
-	m.M23(p1.z - p0.z);
-	m.M33(p2.z - p0.z);
-	
 	m.invert();
 	
-	auto v = m * (la - p0);
-	auto intersection = la + v.x * (lb - la);
+	rz::vector3 v(la - p0);
+	v = m * v;
+	
+	auto intersection = la + v.x() * (lb - la);
 	
 	return position.distance(intersection);
 }

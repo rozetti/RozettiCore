@@ -4,10 +4,13 @@ TEST(BoundingBoxTest, DefaultCtor)
 {
 	rz::bounding_box box;
 
-	EXPECT_EQ(0, box.min.x);
-	EXPECT_EQ(0, box.min.y);
-	EXPECT_EQ(0, box.max.x);
-	EXPECT_EQ(0, box.max.y);
+	EXPECT_EQ(0, box.min().x());
+	EXPECT_EQ(0, box.min().y());
+	EXPECT_EQ(0, box.min().z());
+
+	EXPECT_EQ(0, box.max().x());
+	EXPECT_EQ(0, box.max().y());
+	EXPECT_EQ(0, box.max().z());
 }
 
 TEST(BoundingBoxTest, Ctor)
@@ -17,8 +20,8 @@ TEST(BoundingBoxTest, Ctor)
     
     rz::bounding_box box(min, max);
     
-    EXPECT_TRUE(min == box.min);
-    EXPECT_TRUE(max == box.max);
+    EXPECT_TRUE(min == box.min());
+    EXPECT_TRUE(max == box.max());
 }
 
 TEST(BoundingBoxTest, Contains)

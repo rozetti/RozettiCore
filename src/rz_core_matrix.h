@@ -22,7 +22,39 @@ namespace rz
 		rz::matrix(float f[9]);
 		rz::matrix(rz::matrix const &other);
 
-        inline void M11(float f) { M[_11] = f; }
+		inline void M1(vector3 const &v)
+		{
+			M[_11] = v.x();
+			M[_12] = v.y();
+			M[_13] = v.z();
+			M[_14] = 0.0f; // todo crz: w
+		}
+
+		inline void M2(vector3 const &v)
+		{
+			M[_21] = v.x();
+			M[_22] = v.y();
+			M[_23] = v.z();
+			M[_24] = 0.0f; // todo crz: w
+		}
+
+		inline void M3(vector3 const &v)
+		{
+			M[_31] = v.x();
+			M[_32] = v.y();
+			M[_33] = v.z();
+			M[_34] = 0.0f; // todo crz: w
+		}
+
+		inline void M4(vector3 const &v)
+		{
+			M[_41] = v.x();
+			M[_42] = v.y();
+			M[_43] = v.z();
+			M[_14] = 0.0f; // todo crz: w
+		}
+
+		inline void M11(float f) { M[_11] = f; }
         inline void M12(float f) { M[_12] = f; }
         inline void M13(float f) { M[_13] = f; }
         inline void M14(float f) { M[_14] = f; }

@@ -17,16 +17,14 @@ rz::plane::plane(float x, float y, float z, float d1) :
 
 void rz::plane::normalise()
 {
-	auto t = 1.0f / sqrt(normal.x * normal.x + normal.y * normal.y + normal.z * normal.z);
-	normal.x *= t;
-	normal.y *= t;
-	normal.z *= t;
+	float t = 1.0f / normal.length();
+	normal = normal * t;
 	distance_from_origin *= t;
 }
 
 rz::plane::preposition rz::plane::classify_point(rz::vector3 const &v) const
 {
-	auto f = v.x * normal.x + v.y * normal.y + v.z * normal.z + distance_from_origin;
+	auto f = v.dot(normal) + distance_from_origin;
 	
 	if (f > rz::ONE_FLT_EPSILON)
 	{

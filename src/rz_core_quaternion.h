@@ -16,6 +16,7 @@ namespace rz
 		float w;
 
 		quaternion();
+		quaternion(float x, float y, float z, float w);
 
 		void identity();
 		void normalise();

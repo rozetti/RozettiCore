@@ -14,6 +14,12 @@ rz::quaternion::quaternion() :
 {
 }
 
+rz::quaternion::quaternion(float x, float y, float z, float w) :
+	x(x), y(y), z(z), w(w)
+{
+
+}
+
 void rz::quaternion::identity()
 {
 	x = 0;
@@ -40,12 +46,12 @@ rz::quaternion rz::quaternion::create_from_euler(rz::vector3 const &vec)
 {
 	rz::quaternion q;
 
-	auto cyaw = cosf(0.5f * vec.z);
-	auto cpitch = cosf(0.5f * vec.y);
-	auto croll = cosf(0.5f * vec.x);
-	auto syaw = sinf(0.5f * vec.z);
-	auto spitch = sinf(0.5f * vec.y);
-	auto sroll = sinf(0.5f * vec.x);
+	auto cyaw = cosf(0.5f * vec.z());
+	auto cpitch = cosf(0.5f * vec.y());
+	auto croll = cosf(0.5f * vec.x());
+	auto syaw = sinf(0.5f * vec.z());
+	auto spitch = sinf(0.5f * vec.y());
+	auto sroll = sinf(0.5f * vec.x());
 
 	q.w = cyaw * cpitch * croll + syaw * spitch * sroll;
 	q.x = cyaw * cpitch * sroll - syaw * spitch * croll; 
@@ -124,9 +130,9 @@ void rz::quaternion::rotation_axis(vector3 const &vec, float angle)
 	auto half_angle = angle / 2.0f;
 
 	auto s = sinf(half_angle);
-	x = vec.x * s;
-	y = vec.y * s;
-	z = vec.z * s;
+	x = vec.x() * s;
+	y = vec.y() * s;
+	z = vec.z() * s;
 	w = cosf(half_angle);
 
 	normalise();
@@ -149,9 +155,7 @@ void rz::quaternion::to_axis_angle(rz::vector3 &vec, float &angle) const
 		fSinAngle = 1.0f;
 	}
 
-	vec.x = x / fSinAngle;
-	vec.y = y / fSinAngle;
-	vec.z = z / fSinAngle;
+	vec = rz::vector3(x / fSinAngle, y / fSinAngle, z / fSinAngle);
 }
 
 rz::matrix rz::quaternion::to_matrix() const
@@ -276,23 +280,17 @@ rz::quaternion rz::quaternion::slerp(rz::quaternion const &q1, rz::quaternion co
 
 rz::quaternion rz::quaternion::multiply(rz::quaternion const &q1, rz::quaternion const &q2)
 {
-	rz::vector3	crossProduct;
-	rz::quaternion q;
-	
-	// Compute scalar component
-	q.w = (q1.w * q2.w) - (q1.x * q2.x + q1.y * q2.y + q1.z * q2.z);
+	auto scalar = (q1.w * q2.w) - (q1.x * q2.x + q1.y * q2.y + q1.z * q2.z);
 
-	// Compute cross product
-	crossProduct.x = q1.y * q2.z - q1.z * q2.y;
-	crossProduct.y = q1.z * q2.x - q1.x * q2.z;
-	crossProduct.z = q1.x * q2.y - q1.y * q2.x;
+	auto cross = rz::vector3(q1.y * q2.z - q1.z * q2.y,
+		q1.z * q2.x - q1.x * q2.z,
+		q1.x * q2.y - q1.y * q2.x);
 
-	// Compute result vector
-	q.x = (q1.w * q2.x) + (q2.w * q1.x) + crossProduct.x;
-	q.y = (q1.w * q2.y) + (q2.w * q1.y) + crossProduct.y;
-	q.z = (q1.w * q2.z) + (q2.w * q1.z) + crossProduct.z;
+	auto x = (q1.w * q2.x) + (q2.w * q1.x) + cross.x();
+	auto y = (q1.w * q2.y) + (q2.w * q1.y) + cross.y();
+	auto z = (q1.w * q2.z) + (q2.w * q1.z) + cross.z();
 
-	// Normalize resulting quaternion
+	rz::quaternion q(x, y, z, scalar);
 	q.normalise();
 	
 	return q;

@@ -5,6 +5,7 @@
 #include "rz_core_vector3.h"
 
 // hack crz: this should probably be its own thing (not piggy-backing on vector3)
+// crz: no shit (did I really do this?)
 
 namespace rz
 {
@@ -15,7 +16,7 @@ namespace rz
 		{
 		}
 
-		vector2(vector2 const &vec) : rz::vector3(vec.x, vec.y, 0.0f)
+		vector2(vector2 const &vec) : rz::vector3(vec.x(), vec.y(), 0.0f)
 		{
 		}
 
@@ -25,7 +26,7 @@ namespace rz
 
 		void set(vector2 const &from)
 		{
-			rz::vector3::set(from.x, from.y, 0.0f);
+			rz::vector3::set(from.x(), from.y(), 0.0f);
 		}
 
 		void set(float x, float y)

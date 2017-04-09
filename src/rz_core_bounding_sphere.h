@@ -6,6 +6,8 @@
 
 namespace rz
 {
+	class bounding_box;
+
 	class bounding_sphere
 	{
 	public:
@@ -16,5 +18,8 @@ namespace rz
 		rz::bounding_sphere(rz::vector3 const &center, float radius);
 
 		bool intersects(rz::bounding_sphere const &sphere);
+		//float intersects(rz::ray const &ray); // todo crz: implement this
+
+		static rz::bounding_sphere from_bounding_box(rz::bounding_box const &);
 	};
 }

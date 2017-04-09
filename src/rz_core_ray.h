@@ -18,7 +18,7 @@ namespace rz
 		rz::ray(rz::vector3 const &pos, rz::vector3 const &dir);
 
 		float intersection_with(rz::bounding_sphere const &sphere) const;
-		float intersection_with(bounding_box const &box) const;
+		float intersection_with(rz::bounding_box const &box) const;
 		float intersection_with(rz::plane const &plane) const;
 	};
 }

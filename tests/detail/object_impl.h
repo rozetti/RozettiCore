@@ -79,6 +79,6 @@ namespace Test
 		inline rz::bounding_box const &get_bounding_box() const { return box; }
 		inline void set_bounding_box(::rz::bounding_box const &_box) { box = _box; }
 		
-		inline void grow(float amount) { box.min -= amount; box.max += amount; }
+		inline void grow(float amount) { box = rz::bounding_box(box.min() - amount, box.max() + amount); }
 	};
 }

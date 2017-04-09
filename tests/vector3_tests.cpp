@@ -6,9 +6,9 @@ TEST(Vector3Test, Ctor)
 {
     vector3 v(1.0f, 2.0f, 3.0f);
     
-    EXPECT_EQ(1.0f, v.x);
-    EXPECT_EQ(2.0f, v.y);
-    EXPECT_EQ(3.0f, v.z);
+    EXPECT_EQ(1.0f, v.x());
+    EXPECT_EQ(2.0f, v.y());
+    EXPECT_EQ(3.0f, v.z());
 }
 
 TEST(Vector3Test, CopyCtor)
@@ -17,9 +17,9 @@ TEST(Vector3Test, CopyCtor)
     
     vector3 v(v0);
     
-    EXPECT_EQ(1.0f, v.x);
-    EXPECT_EQ(2.0f, v.y);
-    EXPECT_EQ(3.0f, v.z);
+    EXPECT_EQ(1.0f, v.x());
+    EXPECT_EQ(2.0f, v.y());
+    EXPECT_EQ(3.0f, v.z());
 }
 
 TEST(Vector3Test, Assignment)
@@ -29,9 +29,9 @@ TEST(Vector3Test, Assignment)
     vector3 v;
     v = v0;
     
-    EXPECT_EQ(1.0f, v.x);
-    EXPECT_EQ(2.0f, v.y);
-    EXPECT_EQ(3.0f, v.z);
+    EXPECT_EQ(1.0f, v.x());
+    EXPECT_EQ(2.0f, v.y());
+    EXPECT_EQ(3.0f, v.z());
 }
 
 TEST(Vector3Test, Equals)
@@ -77,9 +77,9 @@ TEST(Vector3Test, Add)
     
     v.add(1.0f, 2.0f, 3.0f);
     
-    EXPECT_EQ(2.0f, v.x);
-    EXPECT_EQ(4.0f, v.y);
-    EXPECT_EQ(6.0f, v.z);
+    EXPECT_EQ(2.0f, v.x());
+    EXPECT_EQ(4.0f, v.y());
+    EXPECT_EQ(6.0f, v.z());
 }
 
 TEST(Vector3Test, OperatorPlus_Vector3)
@@ -89,9 +89,9 @@ TEST(Vector3Test, OperatorPlus_Vector3)
     
     vector3 v_out = v1 + v2;
     
-    EXPECT_EQ(3.0f, v_out.x);
-    EXPECT_EQ(5.0f, v_out.y);
-    EXPECT_EQ(7.0f, v_out.z);
+    EXPECT_EQ(3.0f, v_out.x());
+    EXPECT_EQ(5.0f, v_out.y());
+    EXPECT_EQ(7.0f, v_out.z());
 }
 
 TEST(Vector3Test, OperatorPlus_Float)
@@ -100,15 +100,15 @@ TEST(Vector3Test, OperatorPlus_Float)
     
     vector3 v_out1 = v1 + 2.0f;
     
-    EXPECT_EQ(3.0f, v_out1.x);
-    EXPECT_EQ(4.0f, v_out1.y);
-    EXPECT_EQ(5.0f, v_out1.z);
+    EXPECT_EQ(3.0f, v_out1.x());
+    EXPECT_EQ(4.0f, v_out1.y());
+    EXPECT_EQ(5.0f, v_out1.z());
     
     vector3 v_out2 = 2.0f + v1;
     
-    EXPECT_EQ(3.0f, v_out2.x);
-    EXPECT_EQ(4.0f, v_out2.y);
-    EXPECT_EQ(5.0f, v_out2.z);
+    EXPECT_EQ(3.0f, v_out2.x());
+    EXPECT_EQ(4.0f, v_out2.y());
+    EXPECT_EQ(5.0f, v_out2.z());
 }
 
 TEST(Vector3Test, Subtract)
@@ -117,9 +117,9 @@ TEST(Vector3Test, Subtract)
     
     v.subtract(1.0f, 2.0f, 3.0f);
     
-    EXPECT_EQ(0.0f, v.x);
-    EXPECT_EQ(0.0f, v.y);
-    EXPECT_EQ(0.0f, v.z);
+    EXPECT_EQ(0.0f, v.x());
+    EXPECT_EQ(0.0f, v.y());
+    EXPECT_EQ(0.0f, v.z());
 }
 
 TEST(Vector3Test, OperatorMinus_Vector3)
@@ -185,9 +185,9 @@ TEST(Vector3Test, Divide)
     
     v.divide(1.0f, 2.0f, 3.0f);
     
-    EXPECT_EQ(10.0f, v.x);
-    EXPECT_EQ(10.0f, v.y);
-    EXPECT_EQ(10.0f, v.z);
+    EXPECT_EQ(10.0f, v.x());
+    EXPECT_EQ(10.0f, v.y());
+    EXPECT_EQ(10.0f, v.z());
 }
 
 TEST(Vector3Test, OperatorDivide_Vector3)
@@ -262,9 +262,9 @@ TEST(Vector3Test, Normalise)
     float a = 1.0f / static_cast<float>(std::sqrt(3.0));
     
 	// todo crz: this is lazy and weak
-    EXPECT_EQ(a, v.x);
-    EXPECT_EQ(a, v.y);
-    EXPECT_EQ(a, v.z);
+    EXPECT_EQ(a, v.x());
+    EXPECT_EQ(a, v.y());
+    EXPECT_EQ(a, v.z());
 }
 
 TEST(Vector3Test, Negate)

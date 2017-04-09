@@ -4,9 +4,9 @@ TEST(BoundingSphereTest, DefaultCtor)
 {
 	rz::bounding_sphere sphere;
 
-	EXPECT_EQ(0, sphere.centre.x);
-	EXPECT_EQ(0, sphere.centre.y);
-	EXPECT_EQ(0, sphere.centre.z);
+	EXPECT_EQ(0, sphere.centre.x());
+	EXPECT_EQ(0, sphere.centre.y());
+	EXPECT_EQ(0, sphere.centre.z());
 
 	EXPECT_EQ(0, sphere.radius);
 }
