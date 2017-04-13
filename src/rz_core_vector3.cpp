@@ -7,6 +7,10 @@
 #include <cmath>
 #include <algorithm>
 
+rz::vector4::vector4() : m_x(0.0f), m_y(0.0f), m_z(0.0f), m_w(0.0f) { }
+rz::vector4::vector4(rz::vector4 const &vec) : m_x(vec.x()), m_y(vec.y()), m_z(vec.z()), m_w(vec.w()) { }
+rz::vector4::vector4(float x, float y, float z, float w) : m_x(x), m_y(y), m_z(z), m_w(w) { }
+
 rz::vector3::vector3() : m_x(0.0f), m_y(0.0f), m_z(0.0f), m_w(1.0f) { }
 rz::vector3::vector3(rz::vector3 const &vec) : m_x(vec.x()), m_y(vec.y()), m_z(vec.z()), m_w(1.0f) { }
 rz::vector3::vector3(float x, float y, float z) : m_x(x), m_y(y), m_z(z), m_w(1.0f) { }

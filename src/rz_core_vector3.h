@@ -16,6 +16,24 @@ namespace rz
 {
 	class matrix;
 
+	class vector4
+	{
+		float m_x;
+		float m_y;
+		float m_z;
+		float m_w;
+
+	public:
+		inline float x() const { return m_x; }
+		inline float y() const { return m_y; }
+		inline float z() const { return m_z; }
+		inline float w() const { return m_w; }
+
+		vector4();
+		vector4(rz::vector4 const &vec);
+		vector4(float x, float y, float z, float w);
+	};
+
 	class vector3
 	{
 		float m_x;
@@ -28,9 +46,9 @@ namespace rz
 		inline float y() const { return m_y; }
 		inline float z() const { return m_z; }
 
-		rz::vector3();
-		rz::vector3(rz::vector3 const &vec);
-		rz::vector3(float x, float y, float z);
+		vector3();
+		vector3(rz::vector3 const &vec);
+		vector3(float x, float y, float z);
 
 		void set(rz::vector3 const &from);
 		void set(float x, float y, float z);
