@@ -16,6 +16,7 @@
 
 namespace rz
 {
+	class vector3;
 	class matrix;
 
 	class vector4
@@ -33,6 +34,7 @@ namespace rz
 
 		vector4();
 		vector4(rz::vector4 const &vec);
+		vector4(rz::vector3 const &vec, float w);
 		vector4(float x, float y, float z, float w);
 	};
 

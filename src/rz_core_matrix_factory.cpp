@@ -81,6 +81,11 @@ rz::matrix rz::matrix_factory::create_translation(rz::vector3 const &translation
 
 // todo crz: nothing below here is tested
 
+rz::matrix rz::matrix_factory::create_4x4_from_floats(float const *f)
+{
+	return rz::matrix(f);
+}
+
 rz::matrix rz::matrix_factory::create(rz::vector3 const &rotation, rz::vector3 const &scale, rz::vector3 const &translation)
 {
 	rz::matrix m;
@@ -160,6 +165,7 @@ rz::matrix rz::matrix_factory::create_orthographic_projection(float left, float 
 	m.M22(2.0f / (top - bottom));
 
 	m.M33(-2.0f / (_far - _near));
+	// todo crz: m.M34 = something?
 
 	m.M41((left + right) / (left -right));
 	m.M42((bottom + top) / (bottom - top));
@@ -182,6 +188,7 @@ rz::matrix rz::matrix_factory::create_perspective_projection(float fov, float as
 	m.M22(f);
 
 	m.M33((_far + _near) * n);
+	m.M34(-1.0f);
 
 	m.M43((2.0f * _far * _near) * n);
 	m.M44(1);

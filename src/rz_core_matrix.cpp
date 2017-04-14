@@ -30,7 +30,13 @@ rz::matrix::matrix(float f[9]) :
 	M[_33] = f[8];
 }
 
-rz::matrix::matrix(rz::matrix const &other) : 
+rz::matrix::matrix(float const *f) :
+	F(M)
+{
+	memcpy(M, f, sizeof(M));
+}
+
+rz::matrix::matrix(rz::matrix const &other) :
 	F(0)
 {
     F = M;

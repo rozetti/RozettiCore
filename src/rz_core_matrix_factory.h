@@ -13,6 +13,8 @@ namespace rz
 		static rz::matrix create_zero();
 		static rz::matrix create_identity();
 
+		static rz::matrix create_4x4_from_floats(float const *);
+
 		static rz::matrix create(rz::vector3 const &rotation, rz::vector3 const &scale, rz::vector3 const &translation);
 
 		static rz::matrix create_rotation(rz::vector3 const &axis, float radians);

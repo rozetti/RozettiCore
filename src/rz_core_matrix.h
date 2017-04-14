@@ -20,7 +20,10 @@ namespace rz
 	public:
 		rz::matrix();
 		rz::matrix(float f[9]);
+		rz::matrix(float const *f);
 		rz::matrix(rz::matrix const &other);
+
+		float const *floats() const { return F; }
 
 		inline void M1(vector3 const &v)
 		{
