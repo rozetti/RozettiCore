@@ -192,6 +192,9 @@
     <ClCompile Include="..\..\..\src\rz_core_lua.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\rz_core_vector2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\third_party\lua\lapi.h">

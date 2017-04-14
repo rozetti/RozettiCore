@@ -6,6 +6,8 @@
 
 #include "rz_core_math_templates.h"
 
+#include <tuple>
+
 #define NOMINMAX 
 #include <cmath>
 
@@ -36,19 +38,37 @@ namespace rz
 
 	class vector3
 	{
-		float m_x;
-		float m_y;
-		float m_z;
-		float m_w;
+		using _element_type = float;
+			
+		_element_type m_x;
+		_element_type m_y;
+		_element_type m_z;
+		_element_type m_w;
 
 	public:
-		inline float x() const { return m_x; }
-		inline float y() const { return m_y; }
-		inline float z() const { return m_z; }
+		using element_type = _element_type;
+		using tuple_type = std::tuple<element_type, element_type, element_type>;
+
+		inline element_type x() const { return m_x; }
+		inline element_type y() const { return m_y; }
+		inline element_type z() const { return m_z; }
+
+		inline void x(element_type x) { m_x = x; }
+		inline void y(element_type y) { m_y = y; }
+		inline void z(element_type z) { m_z = z; }
+
+		std::tuple<element_type, element_type> xy() const { return std::tuple<element_type, element_type>(m_x, m_y); }
+		std::tuple<element_type, element_type> xz() const { return std::tuple<element_type, element_type>(m_x, m_z); }
+		std::tuple<element_type, element_type> yz() const { return std::tuple<element_type, element_type>(m_y, m_z); }
+
+		std::tuple<element_type, element_type> yx() const { return std::tuple<element_type, element_type>(m_y, m_x); }
+		std::tuple<element_type, element_type> zx() const { return std::tuple<element_type, element_type>(m_z, m_x); }
+		std::tuple<element_type, element_type> zy() const { return std::tuple<element_type, element_type>(m_z, m_y); }
 
 		vector3();
 		vector3(rz::vector3 const &vec);
-		vector3(float x, float y, float z);
+		vector3(tuple_type const &tuple);
+		vector3(element_type x, element_type y, element_type z);
 
 		void set(rz::vector3 const &from);
 		void set(float x, float y, float z);
@@ -167,3 +187,7 @@ rz::vector3 const operator-(float f, rz::vector3 const &v);
 rz::vector3 const operator*(float f, rz::vector3 const &v);
 rz::vector3 const operator/(float f, rz::vector3 const &v);
 
+namespace rz
+{
+	rz::vector3 transform(rz::vector3 const &vec, rz::matrix const &transformation);
+}

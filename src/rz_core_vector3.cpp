@@ -11,9 +11,10 @@ rz::vector4::vector4() : m_x(0.0f), m_y(0.0f), m_z(0.0f), m_w(0.0f) { }
 rz::vector4::vector4(rz::vector4 const &vec) : m_x(vec.x()), m_y(vec.y()), m_z(vec.z()), m_w(vec.w()) { }
 rz::vector4::vector4(float x, float y, float z, float w) : m_x(x), m_y(y), m_z(z), m_w(w) { }
 
-rz::vector3::vector3() : m_x(0.0f), m_y(0.0f), m_z(0.0f), m_w(1.0f) { }
-rz::vector3::vector3(rz::vector3 const &vec) : m_x(vec.x()), m_y(vec.y()), m_z(vec.z()), m_w(1.0f) { }
-rz::vector3::vector3(float x, float y, float z) : m_x(x), m_y(y), m_z(z), m_w(1.0f) { }
+rz::vector3::vector3() : m_x(static_cast<element_type>(0)), m_y(static_cast<element_type>(0)), m_z(static_cast<element_type>(0)), m_w(static_cast<element_type>(1)) { }
+rz::vector3::vector3(rz::vector3 const &vec) : m_x(vec.x()), m_y(vec.y()), m_z(vec.z()), m_w(static_cast<element_type>(1)) { }
+rz::vector3::vector3(rz::vector3::tuple_type const &tuple) : m_x(std::get<0>(tuple)), m_y(std::get<1>(tuple)), m_z(std::get<2>(tuple)), m_w(1.0f) { }
+rz::vector3::vector3(element_type x, element_type y, element_type z) : m_x(x), m_y(y), m_z(z), m_w(static_cast<element_type>(1)) { }
 
 void rz::vector3::set(rz::vector3 const &vec)
 {
@@ -25,7 +26,7 @@ void rz::vector3::set(float x, float y, float z)
 	m_x = x;
 	m_y = y;
 	m_z = z;
-	m_w = 1.0f;
+	m_w = static_cast<element_type>(1);
 }
 
 bool rz::vector3::equals(rz::vector3 const &other) const
@@ -33,6 +34,8 @@ bool rz::vector3::equals(rz::vector3 const &other) const
 	// todo crz: possibly use a policy to control use of eplison margin
 	return FLT_EQUALS(m_x, other.m_x) && FLT_EQUALS(m_y, other.m_y) && FLT_EQUALS(m_z, other.m_z);
 }
+
+// todo crz: de-float all of this
 
 rz::vector3 &rz::vector3::add(float x, float y, float z)
 {
@@ -153,3 +156,14 @@ rz::vector3 const operator+(float f, rz::vector3 const &v) { return rz::vector3(
 rz::vector3 const operator-(float f, rz::vector3 const &v) { return rz::vector3(f - v.x(), f - v.y(), f - v.z()); }
 rz::vector3 const operator*(float f, rz::vector3 const &v) { return rz::vector3(v) * f; }
 rz::vector3 const operator/(float f, rz::vector3 const &v) { return rz::vector3(f / v.x(), f / v.y(), f / v.z()); }
+
+rz::vector3 rz::transform(rz::vector3 const &vec, rz::matrix const &transformation)
+{
+	rz::vector3 dest;
+
+	auto v1 = vec.x() * transformation.F[0] + vec.y() * transformation.F[4] + vec.z() * transformation.F[8] + transformation.F[12];
+	auto v2 = vec.x() * transformation.F[1] + vec.y() * transformation.F[5] + vec.z() * transformation.F[9] + transformation.F[13];
+	auto v3 = vec.x() * transformation.F[2] + vec.y() * transformation.F[6] + vec.z() * transformation.F[10] + transformation.F[14];
+
+	return dest;
+}
