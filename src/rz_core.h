@@ -29,6 +29,8 @@ SOFTWARE.
 #include <cmath>
 #include <cfloat>
 
+using byte = unsigned char;
+
 #include "rz_core_macros.h"
 
 // crz: math
