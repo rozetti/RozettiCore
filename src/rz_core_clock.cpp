@@ -74,6 +74,11 @@ long long rz::time::get_monotonic_counter()
 	return c;
 }
 
+rz::milliseconds_t rz::time::get_monotonic_milliseconds()
+{
+	return static_cast<milliseconds_t>(rz::time::get_monotonic_counter() / 10000L);
+}
+
 long long rz::time::get_monotonic_correction()
 {
 	return _monotonic_correction;
