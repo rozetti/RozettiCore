@@ -53,6 +53,7 @@ using byte = unsigned char;
 #include "rz_core_angles.h"
 #include "rz_core_math_templates.h"
 #include "rz_core_random.h"
+#include "rz_core_math.h"
 
 // crz: algorithm
 
@@ -97,4 +98,6 @@ using byte = unsigned char;
 
 #include "rz_core_finally_pattern.h"
 #include "rz_core_visitor_pattern.h"
+
+
 

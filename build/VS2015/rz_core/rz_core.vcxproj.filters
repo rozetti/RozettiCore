@@ -195,6 +195,9 @@
     <ClCompile Include="..\..\..\src\rz_core_vector2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\rz_core_math.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\third_party\lua\lapi.h">
@@ -384,6 +387,9 @@
       <Filter>Header Files\impl</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\rz_core_math_templates.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\rz_core_math.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

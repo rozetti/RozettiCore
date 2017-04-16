@@ -144,6 +144,7 @@
     <ClCompile Include="..\..\..\src\rz_core_indent.cpp" />
     <ClCompile Include="..\..\..\src\rz_core_lap_timer.cpp" />
     <ClCompile Include="..\..\..\src\rz_core_lua.cpp" />
+    <ClCompile Include="..\..\..\src\rz_core_math.cpp" />
     <ClCompile Include="..\..\..\src\rz_core_matrix.cpp" />
     <ClCompile Include="..\..\..\src\rz_core_matrix_factory.cpp" />
     <ClCompile Include="..\..\..\src\rz_core_plane.cpp" />
@@ -200,6 +201,7 @@
     <ClInclude Include="..\..\..\src\rz_core_dom_document.h" />
     <ClInclude Include="..\..\..\src\rz_core_dom_node.h" />
     <ClInclude Include="..\..\..\src\rz_core_finally_pattern.h" />
+    <ClInclude Include="..\..\..\src\rz_core_math.h" />
     <ClInclude Include="..\..\..\src\rz_core_math_templates.h" />
     <ClInclude Include="..\..\..\src\rz_core_game.h" />
     <ClInclude Include="..\..\..\src\rz_core_indent.h" />

@@ -22,5 +22,7 @@ namespace rz
 		vector2(float x, float y);
 		void set(vector2 const &from);
 		void set(float x, float y);
+
+		rz::vector2 const operator*(rz::vector2 const &v) const { return vector3(this->x(), this->y(), 0.0f).multiply(v).xy(); }
 	};
 }
