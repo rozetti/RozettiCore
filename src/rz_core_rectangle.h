@@ -4,6 +4,24 @@
 
 namespace rz
 {
+	namespace detail
+	{
+		template <typename T>
+		class rectangle
+		{
+		public:
+			T x;
+			T y;
+			T width;
+			T height;
+
+			rectangle() : x(0), y(0), width(0), height(0) {}
+			rectangle(T _x, T _y, T _w, T _h) : x(_x), y(_y), width(_w), height(_h) {}
+		};
+	}
+
+	using irectangle = detail::rectangle<int>;
+
 	class rectangle
 	{
 	public:
